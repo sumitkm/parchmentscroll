@@ -1,0 +1,32 @@
+{
+  "name": "QuillJsNode",
+  "version": "0.0.1",
+  "description": "A simple editor component using Quill JS on Node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sumitkm/quilljsnode"
+  },
+  "keywords": [
+    "QuillJs",
+    "NodeJs"
+  ],
+  "author": "Sumit Kumar Maitra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sumitkm/quilljsnode/issues"
+  },
+  "devDependencies": {
+    "knockout": "^3.3.0",
+    "quilljs": "^0.18.1"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.5",
+    "knockout": "^3.3.0",
+    "quilljs": "^0.18.1",
+    "require": "^2.4.20"
+  }
+}
