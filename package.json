@@ -1,5 +1,5 @@
 {
-  "name": "QuillJsNode",
+  "name": "parchmentscroll",
   "version": "0.0.1",
   "description": "A simple editor component using Quill JS on Node",
   "main": "index.js",
@@ -8,16 +8,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sumitkm/quilljsnode"
+    "url": "https://github.com/sumitkm/parchmentscroll"
   },
   "keywords": [
     "QuillJs",
     "NodeJs"
   ],
   "author": "Sumit Kumar Maitra",
-  "license": "MIT",
+  "license": "BSD",
   "bugs": {
-    "url": "https://github.com/sumitkm/quilljsnode/issues"
+    "url": "https://github.com/sumitkm/parchmentscroll/issues"
   },
   "devDependencies": {
     "knockout": "^3.3.0",
