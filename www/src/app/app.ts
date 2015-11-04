@@ -13,7 +13,8 @@ requirejs.config(
         "jquery": "../libs/jquery/dist/jquery.min",
         "knockout": "../libs/knockout/dist/knockout",
         "amplify": "../libs/amplify/lib/amplify",
-        "text" : "../libs/text/text"
+        "text" : "../libs/text/text",
+        "quill" : "../libs/quill/dist/quill"
     }
 });
 
