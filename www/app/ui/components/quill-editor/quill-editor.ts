@@ -1,4 +1,4 @@
-/// <reference path="../../../../../typings/quill/quill.d.ts"/>
+/// <reference path="../../../../typings/quill/quill.d.ts"/>
 /// <amd-dependency path="text!./quill-editor.html" />
 /// <amd-dependency path="quill" />
 var ko = require("knockout");
@@ -8,6 +8,9 @@ export class viewModel
 {
   constructor(params)
   {
-    var q = new Quill('#editor');
+    var editor = new Quill('#editor', {
+      theme: 'snow'
+    });
+    editor.addModule('toolbar', { container: "#toolbar"});
   }
 }

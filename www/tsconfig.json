@@ -3,8 +3,7 @@
         "module": "amd",
         "target": "es3",
         "noImplicitAny": false,
-        "outDir": "built",
-        "rootDir": "src/",
+        "rootDir": "app/",
         "sourceMap": false
     },
     "exclude": [
