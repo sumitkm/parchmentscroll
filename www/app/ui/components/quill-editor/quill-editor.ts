@@ -6,11 +6,21 @@ export var Quill = require("quill");
 export var template = require("text!./quill-editor.html");
 export class viewModel
 {
+  private editor: QuillStatic;
+
   constructor(params)
   {
-    var editor = new Quill('#editor', {
+      this.editor = new Quill('#editor', {
+      modules:
+      {
+        "toolbar" : { container: "#toolbar" }
+      },
       theme: 'snow'
     });
-    editor.addModule('toolbar', { container: "#toolbar"});
+  }
+
+  public getHtml = () =>
+  {
+      window.console.debug(this.editor.getHTML());
   }
 }

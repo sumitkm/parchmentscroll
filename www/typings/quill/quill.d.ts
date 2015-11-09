@@ -83,5 +83,5 @@ declare interface QuillStatic{
 
 	addContainer(cssClass: string, before: number);
 
-	
+
 }

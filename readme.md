@@ -1,5 +1,5 @@
-* Parchment Scroll is sample Node JS application that uses *QuillJs* as a Rich
-Text Editor wrapped in a KO component *
+**Parchment Scroll** is simple Node JS application that uses *QuillJs* as a Rich
+Text Editor wrapped in a KO Component. It is mostly written in TypeScript.
 
 What does the 'Editor' do? Nothing at the moment, might save it off to a DB or
 Azure blob store at some point.
