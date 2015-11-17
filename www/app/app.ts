@@ -10,11 +10,15 @@ requirejs.config(
     baseUrl: '/',
     paths:
     {
-        "jquery": "/libs/jquery/dist/jquery.min",
-        "knockout": "/libs/knockout/dist/knockout",
-        "amplify": "/libs/amplify/lib/amplify",
-        "text" : "/libs/text/text",
-        "quill" : "/libs/quill/dist/quill"
+        "jquery": "libs/jquery/dist/jquery.min",
+        "knockout": "libs/knockout/dist/knockout",
+        "amplify": "libs/amplify/lib/amplify",
+        "text" : "libs/text/text",
+        "quill" : "libs/quill/dist/quill"
+    },
+    shim:
+    {
+      "amplify": {deps : ["jquery"]}
     }
 });
 
@@ -22,4 +26,4 @@ requirejs.config(
 // Start loading the main app file. Put all of
 // your application logic in there.
 // testing
-requirejs(["jquery", "knockout", "text", "app/boot/config"]);
+requirejs(["jquery", "knockout", "text", "amplify", "app/boot/config"]);
