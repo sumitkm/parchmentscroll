@@ -2,12 +2,13 @@
 /// <reference path="../typings/express/express.d.ts"/>
 
 import * as express from "express";
-var navigator = require("./navigation/navigator");
-
+var navigator = require("./navigation/routing-engine");
 var app = express();
+
 app.use(express.static('../www/'));
 
-app.use('/router', navigator);
+var nav = new navigator.crossRouter();
+app.use('/api', nav.route);
 //app.get('/', (req, res) =>
 //{
 //  res.send('Hello World!');
