@@ -1,3 +1,5 @@
 node_modules/
 www/libs/
 www/built/
+
+server/app/config.json

@@ -9,7 +9,7 @@ router.use((req, res, next) =>
 });
 
 // define the home page route
-router.get('/services/blog/{id}', (req: express.Request, res: express.Response) => 
+router.get('/services/blog/{id}', (req: express.Request, res: express.Response) =>
 {
   res.send('Birds home page');
 });

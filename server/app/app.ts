@@ -9,10 +9,6 @@ app.use(express.static('../www/'));
 
 var nav = new navigator.crossRouter();
 app.use('/api', nav.route);
-//app.get('/', (req, res) =>
-//{
-//  res.send('Hello World!');
-//});
 
 var server = app.listen(3000, () =>
 {

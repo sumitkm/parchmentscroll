@@ -3,11 +3,10 @@
         "module": "commonjs",
         "target": "es3",
         "noImplicitAny": false,
-        "rootDir": "app/",
+        "rootDir": "./app/",
         "sourceMap": false
     },
     "exclude": [
-        "node_modules",
-        "typings"
+        "node_modules"
     ]
 }
