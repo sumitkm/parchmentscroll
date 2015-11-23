@@ -1,17 +1,24 @@
+import * as base from "../../navigation/routed-service-base";
 import * as express from "express";
+import * as crossroads from "crossroads";
 var router = express.Router();
 
-
-router.use((req, res, next) =>
+export class getBlogService extends base.routedServiceBase
 {
-  console.log('Getting Blog Service:', Date.now());
-  next();
-});
+  public static path: string = "/blog/{id}";
+  constructor()
+  {
+    super(getBlogService.path);
 
-// define the home page route
-router.get('/services/blog/{id}', (req: express.Request, res: express.Response) =>
-{
-  res.send('Birds home page');
-});
+    crossroads.addRoute(getBlogService.path, this.routed);
+  }
 
-module.exports = router;
+  public routed (req :express.Request, res: express.Response, next, params)
+  {
+    console.log("doing my stuff");
+    var serviceResponse = { id: params };
+    // call super.routed only once you have all the data and
+    // and want ready return a serviceResponse
+    super.routed(req, res, next, params, serviceResponse);
+  }
+}

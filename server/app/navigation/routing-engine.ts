@@ -3,21 +3,32 @@
 
 import * as express from "express";
 import * as crossroads from "crossroads";
-
+import * as routingBase from "./routed-service-base";
+import * as gb from "../services/blog/get-blog";
 export class crossRouter
 {
+  private nxt: any;
+  private services = [];
   constructor()
+  {
+    crossroads.ignoreState = true;
+  }
+
+  public registerRoutes = ()=>
   {
     // Ideally all the routes will be specified in an array.
     // The constructor will simply loop through the array
     // and add the route to crossroads along with relevant
     // details required to fire off a handler that gets the data
     // that the api will eventually return
-    crossroads.addRoute("/blog/{id*}", (res, params)=>
-    {
-      console.log("id: " + JSON.stringify(params));
 
-      res.send("The Blog {id} is : " + params);
+    //TODO: This is still ad hoc. Move it out to a register
+    var blogService = require("../services/blog/get-blog");
+    var bs = new blogService.getBlogService();
+
+    crossroads.bypassed.add((url)=>
+    {
+      console.log("bypassed: " + url)
     });
   }
 
@@ -29,8 +40,15 @@ export class crossRouter
   //  app.use('/api', nav.route);
   public route = (req: express.Request, res: express.Response, next: any) =>
   {
-    console.log('CROSS ROUTER:' + req.url);
-    crossroads.parse(req.url, [res]);
+    console.log('crossRouter: ' + crossroads.getNumRoutes() + " routes registered. Request Url:" + req.url );
+    try
+    {
+      crossroads.parse(req.url, [req, res, next]);
+    }
+    catch (e)
+    {
+      console.log("Parse blew up: " + JSON.stringify(e));
+    }
     next();
   }
 }

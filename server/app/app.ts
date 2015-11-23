@@ -8,6 +8,7 @@ var app = express();
 app.use(express.static('../www/'));
 
 var nav = new navigator.crossRouter();
+nav.registerRoutes();
 app.use('/api', nav.route);
 
 var server = app.listen(3000, () =>
