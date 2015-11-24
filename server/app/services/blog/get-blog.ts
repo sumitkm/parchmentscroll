@@ -3,22 +3,22 @@ import * as express from "express";
 import * as crossroads from "crossroads";
 var router = express.Router();
 
-export class getBlogService extends base.routedServiceBase
-{
+export class getBlogService extends base.routedServiceBase {
   public static path: string = "/blog/{id}";
   constructor()
   {
     super(getBlogService.path);
 
-    crossroads.addRoute(getBlogService.path, this.routed);
+    crossroads.addRoute(getBlogService.path, super.routed);
   }
 
-  public routed (req :express.Request, res: express.Response, next, params)
+  public getRouted(req: express.Request, res: express.Response, next, params)
   {
-    console.log("doing my stuff");
+    console.log("Getting routed");
     var serviceResponse = { id: params };
     // call super.routed only once you have all the data and
     // and want ready return a serviceResponse
-    super.routed(req, res, next, params, serviceResponse);
+    res.send(serviceResponse);
+
   }
 }

@@ -5,6 +5,7 @@ import * as express from "express";
 import * as crossroads from "crossroads";
 import * as routingBase from "./routed-service-base";
 import * as gb from "../services/blog/get-blog";
+import * as pb from "../services/blog/post-blog";
 export class crossRouter
 {
   private nxt: any;
@@ -23,8 +24,9 @@ export class crossRouter
     // that the api will eventually return
 
     //TODO: This is still ad hoc. Move it out to a register
-    var blogService = require("../services/blog/get-blog");
-    var bs = new blogService.getBlogService();
+
+    var gbs = new gb.getBlogService();
+    var pbs = new pb.postBlogService();
 
     crossroads.bypassed.add((url)=>
     {

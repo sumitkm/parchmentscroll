@@ -11,12 +11,31 @@ export class routedServiceBase
     this.route = route;
   }
 
-  public routed (req :express.Request, res: express.Response, next, params, serviceResponse)
+  public routed (req :express.Request, res: express.Response, next, params)
   {
     this.request = req;
     this.response = res;
     this.routeParams = params;
     console.log("id: " + JSON.stringify(params));
-    res.send(serviceResponse);
-  };
+
+    if (req.method == "GET")
+    {
+      console.log("doing my GET stuff");
+      this.getRouted(req, res, next, params);
+    }
+    else if (req.method == "POST")
+    {
+      console.log("doing my GET stuff");
+      this.postRouted(req, res, next, params);
+    }
+    //res.send(serviceResponse);
+  }
+
+  public getRouted(req :express.Request, res: express.Response, next, params)
+  {
+  }
+  public postRouted(req :express.Request, res: express.Response, next, params)
+  {
+  }
+
 }
