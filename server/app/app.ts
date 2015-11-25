@@ -1,8 +1,11 @@
 /// <reference path="../typings/requirejs/require.d.ts" />
 /// <reference path="../typings/express/express.d.ts"/>
+/// <reference path="../typings/amplifyjs/amplifyjs.d.ts"/>
 
 import * as express from "express";
-var navigator = require("./navigation/routing-engine");
+
+
+var navigator = require("./navigation/cross-router");
 var app = express();
 
 app.use(express.static('../www/'));

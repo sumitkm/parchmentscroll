@@ -3,9 +3,12 @@
 
 import * as express from "express";
 import * as crossroads from "crossroads";
-import * as routingBase from "./routed-service-base";
+import * as navigation from "./route-registry";
 import * as gb from "../services/blog/get-blog";
 import * as pb from "../services/blog/post-blog";
+
+var amplify = require("amplifier");
+
 export class crossRouter
 {
   private nxt: any;
@@ -32,12 +35,30 @@ export class crossRouter
     {
       console.log("bypassed: " + url)
     });
+
+    var registry = new navigation.routeRegistry();
+    for (let i = 0; i <registry.routes.length; i++)
+    {
+      var currentRoute = registry.routes[i];
+      crossroads.addRoute(currentRoute.route, (req :express.Request, res: express.Response, next, params) =>
+      {
+        if(req.method == currentRoute.type)
+        {
+          console.log("id: " + JSON.stringify(params));
+          amplify.publish(currentRoute.name, req, res, next, params);
+        }
+        else
+        {
+          console.log("request.method: " + req.method + "currentRoute.type:" + currentRoute.type);
+        }
+      });
+    }
   }
 
   // All routes that start with /api are sent to this function.
   // This is as per the middleware configuration in app.ts
   // e.g.
-  //  var navigator = require("./navigation/routing-engine");
+  //  var navigator = require("./navigation/cross-router");
   //  var nav = new navigator.crossRouter();
   //  app.use('/api', nav.route);
   public route = (req: express.Request, res: express.Response, next: any) =>
@@ -49,7 +70,7 @@ export class crossRouter
     }
     catch (e)
     {
-      console.log("Parse blew up: " + JSON.stringify(e));
+      console.log("Parse blew up: " + typeof(e));
     }
     next();
   }

@@ -1,16 +1,21 @@
-import * as base from "../../navigation/routed-service-base";
+/// <reference path="../../../typings/amplifyjs/amplifyjs.d.ts"/>
+
 import * as express from "express";
 import * as crossroads from "crossroads";
+import * as navigation from "../../navigation/cross-route";
+
+var amplify = require("amplifier");
+
 var router = express.Router();
 
-export class getBlogService extends base.routedServiceBase {
-  public static path: string = "/blog/{id}";
+export class getBlogService
+{
+  public static route: navigation.crossRoute = new navigation.crossRoute("/blog/{id}", "get-blog-post");
   constructor()
   {
-    super(getBlogService.path);
-
-    crossroads.addRoute(getBlogService.path, super.routed);
+    amplify.subscribe(getBlogService.route.name, this, this.getRouted);
   }
+
 
   public getRouted(req: express.Request, res: express.Response, next, params)
   {
