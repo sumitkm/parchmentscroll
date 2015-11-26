@@ -10,20 +10,16 @@ var router = express.Router();
 
 export class getBlogService
 {
-  public static route: navigation.crossRoute = new navigation.crossRoute("/blog/{id}", "get-blog-post");
+  public static routeName: string = "GET:blog-post";
   constructor()
   {
-    amplify.subscribe(getBlogService.route.name, this, this.getRouted);
+    amplify.subscribe(getBlogService.routeName, this, this.getRouted);
   }
 
 
   public getRouted(req: express.Request, res: express.Response, next, params)
   {
-    console.log("Getting routed");
-    var serviceResponse = { id: params };
-    // call super.routed only once you have all the data and
-    // and want ready return a serviceResponse
+    var serviceResponse = { getoutid: params, something: "someotherthing" };
     res.send(serviceResponse);
-
   }
 }

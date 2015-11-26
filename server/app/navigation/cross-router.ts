@@ -42,15 +42,8 @@ export class crossRouter
       var currentRoute = registry.routes[i];
       crossroads.addRoute(currentRoute.route, (req :express.Request, res: express.Response, next, params) =>
       {
-        if(req.method == currentRoute.type)
-        {
-          console.log("id: " + JSON.stringify(params));
-          amplify.publish(currentRoute.name, req, res, next, params);
-        }
-        else
-        {
-          console.log("request.method: " + req.method + "currentRoute.type:" + currentRoute.type);
-        }
+          console.log("params: " + JSON.stringify(params));
+          amplify.publish(req.method+":"+currentRoute.name, req, res, next, params);
       });
     }
   }
@@ -63,7 +56,7 @@ export class crossRouter
   //  app.use('/api', nav.route);
   public route = (req: express.Request, res: express.Response, next: any) =>
   {
-    console.log('crossRouter: ' + crossroads.getNumRoutes() + " routes registered. Request Url:" + req.url );
+    console.log("crossRouter: Requested Url:" + req.url );
     try
     {
       crossroads.parse(req.url, [req, res, next]);
@@ -75,26 +68,3 @@ export class crossRouter
     next();
   }
 }
-//import navigation = require("./navigation");
-
-// var router = express.Router();
-//
-// router.use((req, res, next) =>
-// {
-//   console.log('Time: ', Date.now());
-//   next();
-// });
-// // define the home page route
-// router.get('/', (req: express.Request, res: express.Response) =>
-// {
-//   var navigator = new navigation.Navigator(req, res);
-//
-//   res.send('Birds home page');
-// });
-// // define the about route
-// router.get('/about', (req: express.Request, res: express.Response) =>
-// {
-//   res.send('About bird lets');
-// });
-//
-// module.exports = router;

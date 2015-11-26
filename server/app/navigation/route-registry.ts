@@ -7,7 +7,6 @@ export class routeRegistry
 
   constructor()
   {
-    this.routes.push(new navigation.crossRoute("/blog/{id}", "get-blog-post", "GET"));
-    this.routes.push(new navigation.crossRoute("/blog/{id}", "post-blog-post", "POST"));
+    this.routes.push(new navigation.crossRoute("/blog/{id}", "blog-post"));
   }
 }
