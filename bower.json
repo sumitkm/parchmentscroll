@@ -24,5 +24,13 @@
     "www/libs/",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "knockout": "knockoutjs#~3.4.0",
+    "quill": "~0.20.1",
+    "requirejs": "~2.1.22",
+    "text": "~2.0.14",
+    "amplify": "~1.1.2"
+  }
 }

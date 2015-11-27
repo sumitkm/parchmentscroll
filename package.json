@@ -24,9 +24,11 @@
     "quilljs": "^0.18.1"
   },
   "dependencies": {
+    "amplifier": "^1.0.1",
     "amplify": "0.0.11",
     "body-parser": "^1.14.1",
     "bootstrap": "^3.3.5",
+    "crossroads": "^0.12.2",
     "express": "^4.13.3",
     "http": "0.0.0",
     "knockout": "^3.3.0",
