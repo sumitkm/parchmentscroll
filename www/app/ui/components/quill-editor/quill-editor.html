@@ -1,8 +1,12 @@
 <tab-strip params="{ tabs: tabs }">
 </tab-strip>
 
-<div data-bind="visible: tabs[1].active">
+<div data-bind="visible: tabs[2].active">
   <div data-bind="html: markup"></div>
+</div>
+
+<div data-bind="visible: tabs[1].active">
+  <div data-bind="text: markup"></div>
 </div>
 
 <div data-bind="visible: tabs[0].active">

@@ -6,6 +6,7 @@ declare module "Quill" {
 }
 
 declare interface QuillStatic{
+	on(eventName: string, callback: (delta: any, source: string)=>void);
 	addModule(id: string, options: any);
 
   getText():string;
