@@ -12,7 +12,7 @@ export class viewModel
       url: "/api/blog/0",
       type: "POST"
     });
-    
+
   constructor(params)
   {
 

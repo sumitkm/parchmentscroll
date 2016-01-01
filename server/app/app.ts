@@ -1,4 +1,4 @@
-/// <reference path="../typings/requirejs/require.d.ts" />
+/// <reference path="../typings/node/node.d.ts" />
 /// <reference path="../typings/express/express.d.ts"/>
 /// <reference path="../typings/amplifyjs/amplifyjs.d.ts"/>
 

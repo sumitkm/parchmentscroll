@@ -5,3 +5,4 @@ www/built/
 server/app/config.json
 
 .DS_Store
+.directory
