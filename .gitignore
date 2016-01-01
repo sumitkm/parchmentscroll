@@ -3,3 +3,5 @@ www/libs/
 www/built/
 
 server/app/config.json
+
+.DS_Store
