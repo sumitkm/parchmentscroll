@@ -5,7 +5,7 @@ export class azureBlobRepository
 {
   constructor()
   {
-    nconf.env().file({ file: 'app/config.json', search: true });
+    nconf.env().file({ file: 'server/app/config.json', search: true });
 
   }
 
@@ -15,26 +15,35 @@ export class azureBlobRepository
     try
     {
       var connectionString = nconf.get("AZURE_STORAGE_CONNECTION_STRING");
+      console.log(connectionString);
       var blobSvc = azure.createBlobService(connectionString);
-      blobSvc.createContainerIfNotExists('blogs', {publicAccessLevel : 'blob'}, function(error, result, response){
+      blobSvc.createContainerIfNotExists('blogs', null, function(error, result, response){
           if(!error)
           {
               // if result = true, container was created.
               // if result = false, container already existed.
+              console.log("Container Result: " + result);
+              blobSvc.createBlockBlobFromText('blogs', id + '.html', content.post, null, (error, result, response) =>
+              {
+                if(!error)
+                {
+                  // file uploaded
+                  console.log("File Result: " + JSON.stringify(result));
+
+                }
+                else
+                {
+                  console.log("Failed to create blob " + JSON.stringify(error));
+                }
+              });
+          }
+          else
+          {
+            console.error("Failed to create container: " + error);
           }
       });
 
-      blobSvc.createBlockBlobFromText('blogs', id + '.html', content.post, null, (error, result, response) =>
-      {
-        if(!error)
-        {
-          // file uploaded
-        }
-        else
-        {
-          console.log("Failed to create blob " + JSON.stringify(error));
-        }
-      });
+
     }
     catch (err)
     {
