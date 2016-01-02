@@ -1,6 +1,5 @@
 /// <reference path="../typings/node/node.d.ts" />
 /// <reference path="../typings/express/express.d.ts"/>
-/// <reference path="../typings/amplifyjs/amplifyjs.d.ts"/>
 
 import * as express from "express";
 
@@ -13,7 +12,7 @@ var app = express();
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-app.use(express.static('../www/'));
+app.use(express.static('www/'));
 
 var nav = new navigator.crossRouter();
 nav.registerRoutes();
